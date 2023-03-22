@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { HydratedDocument } from "mongoose";
+import mongoose, { HydratedDocument } from "mongoose";
+import { CurrencyType } from "../../currency_type/schemas/currency_type.schema";
 
 export type AdminDocument = HydratedDocument<Admin>
 
