@@ -32,9 +32,13 @@ export class AdminService {
     return this.adminModel.findOne({ user_name }).exec()
   }
 
+  updateAdmin(id: string, updateAdminDto: UpdateAdminDto){
+    return this.adminModel.findByIdAndUpdate(id, updateAdminDto, { new: true }).exec()
+  }
 
-
-
+  remove(id:string){
+    return this.adminModel.findByIdAndDelete(id)
+  }
 
 
 

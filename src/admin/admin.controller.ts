@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
 import { AdminService } from './admin.service';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
@@ -27,6 +27,16 @@ export class AdminController {
     return this.adminService.findOneByUsername(username)
   }
 
+  @Patch('update/:id')
+  async updateAdmin(@Param('id') id: string, @Body() updateStudentDto: UpdateAdminDto) {
+    return await this.adminService.updateAdmin(id, updateStudentDto);
+  }
+
+
+  @Delete(":id")
+  async deleteAdmin(@Param("id") id: string){
+    return await this.adminService.remove(id)
+  }
 
 
   /* @Get(':id')
