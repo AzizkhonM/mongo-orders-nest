@@ -3,5 +3,7 @@ export class CreateOrderDto {
     phone_number: string
     product_link: string
     sum: number
-    email: string
+    currency_type_id: string
+    email?: string
+    description: string
 }
