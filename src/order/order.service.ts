@@ -13,11 +13,23 @@ export class OrderService {
   async create(createOrderDto: CreateOrderDto): Promise<Order> {
     const createdOrder = await new this.orderModel(createOrderDto).save()
 
-    console.log(createdOrder._id)
+    function generateID() {
+      const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const letter1 = letters[Math.floor(Math.random() * letters.length)];
+      const letter2 = letters[Math.floor(Math.random() * letters.length)];
+      const digits1 = Math.floor(1000000000 + Math.random() * 9000000000);
+      const digits2 = Math.floor(1000000000 + Math.random() * 9000000000);
+      const digits3 = Math.floor(1000000000 + Math.random() * 9000000000);
+      const letter3 = letters[Math.floor(Math.random() * letters.length)];
+      const letter4 = letters[Math.floor(Math.random() * letters.length)];
+      return letter1 + letter2 + digits1.toString().slice(0, 4) + digits2.toString().slice(0, 4) + digits3.toString().slice(0, 4) + letter3 + letter4;
+    }
+    
+    const id = generateID();
     
     const updateOrder = await this.orderModel.findByIdAndUpdate(
       String(createdOrder._id),
-      { order_unique_id: String(createdOrder._id) },
+      { order_unique_id: id },
       { new: true }
     )
     

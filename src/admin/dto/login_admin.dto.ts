@@ -1,4 +1,4 @@
 export class LoginAdminDto{
-    email: string
+    user_name: string
     password:string
 }
